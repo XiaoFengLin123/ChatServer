@@ -16,9 +16,11 @@ class Handler implements URLHandler {
             if (url.getPath().contains("/add-message")) {
                 String[] parameters = url.getQuery().split("=");
                 if (parameters[0].equals("s")) {
+                    text1 = parameter[0].split("&");
                     text += parameters[1];
                     return String.format("Number increased by %s! It's now %d", parameters[1], num);
                 }
+                if (p
             }
             return "404 Not Found!";
         }
