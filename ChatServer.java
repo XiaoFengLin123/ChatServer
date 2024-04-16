@@ -4,7 +4,7 @@ import java.net.URI;
 class Handler implements URLHandler {
     // The one bit of state on the server: a number that will be manipulated by
     // various requests.
-    int num = 0;
+    String text;
 
     public String handleRequest(URI url) {
         if (url.getPath().equals("/")) {
@@ -13,10 +13,10 @@ class Handler implements URLHandler {
             num += 1;
             return String.format("Number incremented!");
         } else {
-            if (url.getPath().contains("/add")) {
+            if (url.getPath().contains("/add-message")) {
                 String[] parameters = url.getQuery().split("=");
-                if (parameters[0].equals("count")) {
-                    num += Integer.parseInt(parameters[1]);
+                if (parameters[0].equals("s")) {
+                    text += parameters[1];
                     return String.format("Number increased by %s! It's now %d", parameters[1], num);
                 }
             }
