@@ -2,14 +2,15 @@ import java.io.IOException;
 import java.net.URI;
 
 class Handler implements URLHandler {
-
+    String Chatlog = "";
     public String handleRequest(URI url) {
             if (url.getPath().contains("/add-message")) {
                 String[] parameters = url.getQuery().split("&");
-                if (parameters[0].substring(0,2).equals("s=" && parameters[1].substring(0,5).equals("user=") {
-                    Message = parameters[0].substring(2);
-                    User = parameters[1].substring(5);
-                    return User + ": " + Message + "\n";
+                if (parameters[0].substring(0,2).equals("s=") && parameters[1].substring(0,5).equals("user=")) {
+                    String Message = parameters[0].substring(2);
+                    String User = parameters[1].substring(5);
+                    String Chatlog += User + ": " + Message + "\n";
+                    return Chatlog;
                 }
             }
             return "404 Not Found!";
