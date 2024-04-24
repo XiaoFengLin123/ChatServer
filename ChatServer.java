@@ -2,32 +2,22 @@ import java.io.IOException;
 import java.net.URI;
 
 class Handler implements URLHandler {
-    // The one bit of state on the server: a number that will be manipulated by
-    // various requests.
-    String text;
 
     public String handleRequest(URI url) {
-        if (url.getPath().equals("/")) {
-            return String.format("Number: %d", num);
-        } else if (url.getPath().equals("/increment")) {
-            num += 1;
-            return String.format("Number incremented!");
-        } else {
             if (url.getPath().contains("/add-message")) {
-                String[] parameters = url.getQuery().split("=");
-                if (parameters[0].equals("s")) {
-                    text1 = parameter[0].split("&");
-                    text += parameters[1];
-                    return String.format("Number increased by %s! It's now %d", parameters[1], num);
+                String[] parameters = url.getQuery().split("&");
+                if (parameters[0].substring(0,2).equals("s=" && parameters[1].substring(0,5).equals("user=") {
+                    Message = parameters[0].substring(2);
+                    User = parameters[1].substring(5);
+                    return User + ": " + Message + "\n";
                 }
-                if (p
             }
             return "404 Not Found!";
         }
     }
 }
 
-class NumberServer {
+class ChatServer {
     public static void main(String[] args) throws IOException {
         if(args.length == 0){
             System.out.println("Missing port number! Try any number between 1024 to 49151");
